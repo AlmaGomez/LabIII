@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
  * @author:  Alma Angelica Gómez Alonzo 
  * @version:  1.0 
  */
+
 public class Calculadora extends JFrame {
 
 	/**
