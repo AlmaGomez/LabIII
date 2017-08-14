@@ -21,9 +21,8 @@ import javax.swing.border.EmptyBorder;
  * 
  * Interfaz para nuestra calculadora basica
  * 
- * @author:  emmanuel 
+ * @author:  Alma Angelica Gómez Alonzo 
  * @version:  1.0 
- * @date: 06-09-2015 
  */
 public class Calculadora extends JFrame {
 
@@ -69,11 +68,13 @@ public class Calculadora extends JFrame {
 		pantalla.setEditable(false);
 		pantalla.setBackground(Color.WHITE);
 		panel.add("North", pantalla);
-
+                
 		panelNumeros = new JPanel();
 		panelNumeros.setLayout(new GridLayout(4, 3));
 		panelNumeros.setBorder(new EmptyBorder(4, 4, 4, 4));
-
+                
+                //Agrega los botones de los numeros
+                
 		for (int n = 9; n >= 0; n--) {
 			nuevoBotonNumerico("" + n);
 		}
@@ -81,7 +82,9 @@ public class Calculadora extends JFrame {
 		nuevoBotonNumerico(".");
 
 		panel.add("Center", panelNumeros);
-
+                
+                //inserta botones de operaciones
+                
 		panelOperaciones = new JPanel();
 		panelOperaciones.setLayout(new GridLayout(6, 2));
 		panelOperaciones.setBorder(new EmptyBorder(4, 4, 4, 4));
@@ -90,13 +93,13 @@ public class Calculadora extends JFrame {
 		nuevoBotonOperacion("-");
 		nuevoBotonOperacion("*");
 		nuevoBotonOperacion("/");
-		nuevoBotonOperacion("=");
 		nuevoBotonOperacion("CE");
                 nuevoBotonOperacion("^2");
                 nuevoBotonOperacion("√");
                 nuevoBotonOperacion("Redondeo");
                 nuevoBotonOperacion("Sin");
                 nuevoBotonOperacion("Cos");
+                nuevoBotonOperacion("=");
 
 		panel.add("East", panelOperaciones);
 
@@ -186,7 +189,7 @@ public class Calculadora extends JFrame {
 	}
 
 	/**
-	 * Calcula el resultado y lo muestra por pantalla
+	 * Calcula el resultado segun la operacion resultado y lo muestra por pantalla
 	 */
 	private void calcularResultado() {
 		if (operacion.equals("+")) {
@@ -198,8 +201,7 @@ public class Calculadora extends JFrame {
 		} else if (operacion.equals("*")) {
 			resultado *= new Double(pantalla.getText());
 		} else if (operacion.equals("^2")){
-                        resultado = Math.pow(Double.parseDouble(pantalla.getText()),2);
-                        
+                        resultado = Math.pow(Double.parseDouble(pantalla.getText()),2);     
                 } else if (operacion.equals("√")){
                         resultado = Math.sqrt(Double.parseDouble(pantalla.getText()));
                 } else if (operacion.equals("Redondeo")){
@@ -210,7 +212,8 @@ public class Calculadora extends JFrame {
                         resultado  = Math.cos(Double.parseDouble(pantalla.getText()));
                 }
                  
-
+                //Proyecta el resltado optenido de la operacion en la pantalla
+                
 		pantalla.setText("" + resultado);
 		operacion = "";
 	}
