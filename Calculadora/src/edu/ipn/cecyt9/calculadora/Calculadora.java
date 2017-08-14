@@ -53,7 +53,7 @@ public class Calculadora extends JFrame {
 	 */
 	public Calculadora() {
 		super();
-		setSize(250, 300);
+		setSize(350, 300);
 		setTitle("Calculadora Simple");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -83,7 +83,7 @@ public class Calculadora extends JFrame {
 		panel.add("Center", panelNumeros);
 
 		panelOperaciones = new JPanel();
-		panelOperaciones.setLayout(new GridLayout(6, 1));
+		panelOperaciones.setLayout(new GridLayout(6, 2));
 		panelOperaciones.setBorder(new EmptyBorder(4, 4, 4, 4));
 
 		nuevoBotonOperacion("+");
@@ -92,6 +92,11 @@ public class Calculadora extends JFrame {
 		nuevoBotonOperacion("/");
 		nuevoBotonOperacion("=");
 		nuevoBotonOperacion("CE");
+                nuevoBotonOperacion("^2");
+                nuevoBotonOperacion("√");
+                nuevoBotonOperacion("Redondeo");
+                nuevoBotonOperacion("Sin");
+                nuevoBotonOperacion("Cos");
 
 		panel.add("East", panelOperaciones);
 
@@ -192,7 +197,19 @@ public class Calculadora extends JFrame {
 			resultado /= new Double(pantalla.getText());
 		} else if (operacion.equals("*")) {
 			resultado *= new Double(pantalla.getText());
-		}
+		} else if (operacion.equals("^2")){
+                        resultado = Math.pow(Double.parseDouble(pantalla.getText()),2);
+                        
+                } else if (operacion.equals("√")){
+                        resultado = Math.sqrt(Double.parseDouble(pantalla.getText()));
+                } else if (operacion.equals("Redondeo")){
+                        resultado =Math.round(Double.parseDouble(pantalla.getText()));                            
+                } else if (operacion.equals("Sin")){
+                        resultado  = Math.sin(Double.parseDouble(pantalla.getText()));
+                } else if (operacion.equals("Cos")){
+                        resultado  = Math.cos(Double.parseDouble(pantalla.getText()));
+                }
+                 
 
 		pantalla.setText("" + resultado);
 		operacion = "";
